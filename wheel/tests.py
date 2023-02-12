@@ -3,13 +3,7 @@ import requests
 import json
 
 
-
-def getReq(url):
-    response = requests.get(url)
-    decode_response = json.loads(response.content)
-    return decode_response
-
-def postReq():
+def auth():
 
     url_get_token = 'http://127.0.0.1:8000/api/auth/token/'
     data = {
@@ -20,11 +14,17 @@ def postReq():
     decode_response = json.loads(response.content)
     return decode_response['access']
 
-def postReqTest(url):
+def getWithoutAuth(url):
+    response = requests.get(url)
+    decode_response = json.loads(response.content)
+    return decode_response
+
+
+def postWithAuth(url):
     
     headers = {
         # "Accept": "application/json",
-        'Authorization': f'AUTHTOKEN {postReq()}',
+        'Authorization': f'AUTHTOKEN {auth()}',
         # 'Content-Type': 'application/x-www-form-urlencoded',
     }
     data = {
@@ -34,7 +34,7 @@ def postReqTest(url):
     decode_response = json.loads(response.content)
     return decode_response
 
-def postReqTest2(url):
+def postWithoutAuth(url):
     
     data = {
         'name':'1',
@@ -46,7 +46,7 @@ def postReqTest2(url):
 def deleteTest(url):
     headers = {
         # "Accept": "application/json",
-        'Authorization': f'AUTHTOKEN {postReq()}',
+        'Authorization': f'AUTHTOKEN {auth()}',
         # 'Content-Type': 'application/x-www-form-urlencoded',
     }    
 
@@ -59,6 +59,14 @@ def deleteTest(url):
 url = 'http://127.0.0.1:8000/api/wheel/comb/'
 url1 = 'http://127.0.0.1:8000/api/wheel/addbox/'
 url2 = 'http://127.0.0.1:8000/api/wheel/usersbox/1'
+
+info_all_box = 'api/wheel/combackbox/'  # info about box for everybody
+random_items = 'api/wheel/comb/' # take items only register and limit freespin   data:name
+take_freespin = 'api/wheel/addbox/' # take freespin only register users
+info_and_del_bag = 'api/wheel/usersbox/1' # information about owners items with pk-user and clear all items users
+take_token = 'api/auth/token/' # take token username and pass
+registration = 'api/auth/register/' # register give 10 freespin afte register
+
 
 # print(postReqTest(url))
 # print(deleteTest(url2))
