@@ -7,12 +7,24 @@ def auth():
 
     url_get_token = 'http://127.0.0.1:8000/api/auth/token/'
     data = {
-        'username':'banda17',
-        'password':'YaBandit17',
+        'username':'bandit',
+        'password':'123',
     }
     response = requests.post(url_get_token,data=data)
     decode_response = json.loads(response.content)
     return decode_response['access']
+
+def register(url):
+    
+    data = {
+        'username':'cory',
+        'password':'YaBandit17', 
+        'password2': 'YaBandit17', 
+        'email':'asasdasdd@gmail.com'
+    }
+    response = requests.post(url,data=data)
+    decode_response = json.loads(response.content)
+    return decode_response
 
 def getWithoutAuth(url):
     response = requests.get(url)
@@ -28,9 +40,11 @@ def postWithAuth(url):
         # 'Content-Type': 'application/x-www-form-urlencoded',
     }
     data = {
-        'name':'banda17',
+        'name':'bandit',
     }
     response = requests.post(url,headers=headers,data=data)
+    # response = requests.get(url,headers=headers)
+    print(headers)
     decode_response = json.loads(response.content)
     return decode_response
 
@@ -67,7 +81,10 @@ info_and_del_bag = 'api/wheel/usersbox/1' # information about owners items with 
 take_token = 'api/auth/token/' # take token username and pass
 registration = 'api/auth/register/' # register give 10 freespin afte register
 
+urlpattern = 'http://127.0.0.1:8000/'
 
-# print(postReqTest(url))
+# print(postWithAuth(urlpattern+info_and_del_bag))
 # print(deleteTest(url2))
-print(deleteTest(url2))
+print(postWithAuth(urlpattern+take_freespin))
+# print(deleteTest(url2))
+# print(register(urlpattern+registration))
