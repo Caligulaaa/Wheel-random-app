@@ -85,6 +85,6 @@ urlpattern = 'http://127.0.0.1:8000/'
 
 # print(postWithAuth(urlpattern+info_and_del_bag))
 # print(deleteTest(url2))
-print(postWithAuth(urlpattern+take_freespin))
+print(postWithAuth(urlpattern+random_items))
 # print(deleteTest(url2))
 # print(register(urlpattern+registration))

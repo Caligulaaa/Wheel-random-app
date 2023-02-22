@@ -16,11 +16,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 AUTH_USER_MODEL = 'authbk.User'
 # Application definition
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -121,6 +122,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

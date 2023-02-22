@@ -4,6 +4,7 @@ from rest_framework import generics,status
 from .models import *
 from authbk.models import User
 from .randomwheel import *
+# from .tasks import randomitem
 
 from .permisions import *
 from .serializers import *
@@ -88,6 +89,7 @@ class GetBoxView(generics.CreateAPIView):
 
             # print(usersbox)
             randomcase = get_randombox()
+            # randomcase = randomitem.delay()
             usersbox = User.objects.get(username=request.user.username)
             combox = CombackBox.objects.get(id=randomcase[0])
             AllOpenCaseUser.objects.create(user=usersbox,combox=combox)
