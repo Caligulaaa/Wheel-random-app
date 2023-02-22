@@ -1,6 +1,6 @@
 
 import sqlite3
-
+import psycopg2
 
 def sqlitee3_simple_dtbs(cur, nameid,name ):
 
@@ -13,9 +13,26 @@ def sqlitee3_simple_dtbs(cur, nameid,name ):
         print(str(sadas))
         
         
-con = sqlite3.connect("../djangoproject/wheellucky/wheel/db.sqlite3")
+# con = sqlite3.connect("..")
+# cur = con.cursor()
 
-cur = con.cursor()
+connection = psycopg2.connect(
+    database="wheel",
+    user="bandit",
+    password="q1w2e3r4",
+    host="localhost",
+    port="5432",
+    )
+cursor = connection.cursor()
+def postgresql_simple_toDTB(name,chance):
+    data_tuple = (name, chance)
+    cursor.execute('''INSERT INTO backend_combackbox 
+                (cases,chanse) VALUES(%s, %s)''', data_tuple)
+
+
+    connection.commit()
+
+
 
 data = [
 ['Идеальный приз х15',80.813],['Отличный приз',1.8],['Бронзовая монета',9],['Золотая монета',0.35],['Платиновый идол',1.25],['Платиновый амулет',1.25],
@@ -27,6 +44,10 @@ data = [
 ['Орден славы',0.01],['Красный глаз',0.2],['Камень безбрежности',0.25],['Камень морской лазури',0.25],
 ['Орден с гравировкой',0.7],['Меч летнего ветра', 0.1],['Загадочная лампа',0.012]]
 
+
+
 for newKey in data:
-    sqlitee3_simple_dtbs(cur, newKey[0],newKey[1])
- 
+    # sqlitee3_simple_dtbs(cur, newKey[0],newKey[1])
+    postgresql_simple_toDTB(newKey[0],newKey[1])
+
+connection.close()
