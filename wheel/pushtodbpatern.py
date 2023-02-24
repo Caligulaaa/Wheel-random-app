@@ -1,6 +1,7 @@
 
 import sqlite3
 import psycopg2
+import os
 
 def sqlitee3_simple_dtbs(cur, nameid,name ):
 
@@ -17,10 +18,10 @@ def sqlitee3_simple_dtbs(cur, nameid,name ):
 # cur = con.cursor()
 
 connection = psycopg2.connect(
-    database="wheel",
-    user="bandit",
-    password="q1w2e3r4",
-    host="localhost",
+    database=os.environ.get('DTBNAME'),
+    user=os.environ.get("DTBUSER"),
+    password=os.environ.get('DTBPASSWORD'),
+    host=os.environ.get('DTBPORT'),
     port="5432",
     )
 cursor = connection.cursor()
