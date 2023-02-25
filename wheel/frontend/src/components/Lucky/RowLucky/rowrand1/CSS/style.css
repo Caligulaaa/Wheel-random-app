@@ -1,0 +1,90 @@
+
+
+.myBody {
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background: #ffffff;
+  color: rgb(252, 250, 250);
+}
+
+
+.apple {
+
+  position: relative;
+  width: 850px;
+  background: #575757;
+  /* border-radius: 10px; */
+}
+.apple .pointer {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  height: 60px;
+  width: 40px;
+  background: #fc2803;
+  position: absolute;
+  clip-path: polygon(100% 0,50% 100%,0 0);
+  transform: translate3d(-50%, -50px, 0);
+  filter: drop-shadow(0 0 20px rgba(71, 69, 69, 0.3));
+}
+.apple .scope {
+  overflow: hidden;
+}
+.apple .scope .list {
+  position: relative;
+  display: inline-flex;
+  left: 0;
+  transform: translate3d(0, 0, 0);
+  list-style: none;
+  transition: 5s cubic-bezier(0.21, 0.53, 0.29, 0.99);
+}
+.apple .scope .list__item {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 200px;
+  opacity: 0.5;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+.apple .scope .list__item:nth-child(2n) {
+  background: rgba(5, 5, 5, 0.979);
+}
+.apple .scope .list__item.active {
+  opacity: 1;
+}
+/* .apple .scope .list__item.active img {
+  transform: scale(1.05);
+}
+.apple .scope .list__item img {
+  width: 80%;
+  height: 80%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: 0.3s ease;
+} */
+.apple .start {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate3d(-50%, 20px, 0);
+  padding: 15px 200px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #000000;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 0 30px 0 rgba(247, 7, 7, 0.2);
+  cursor: pointer;
+}
+.apple .start:hover {
+  opacity: 0.8;
+}
